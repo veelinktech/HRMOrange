@@ -2,6 +2,7 @@ package com.hrmorange.basics;
 
 import java.time.Duration;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -37,6 +38,12 @@ public class Example1
 		Assert.assertEquals(driver.getCurrentUrl(), "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
 	}
 	
+	@Test(priority = 3)
+	public void verifyLoginTitle()
+	{
+		String actualLoginTitle = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/h5")).getText();
+		Assert.assertEquals(actualLoginTitle, "Login");
+	}
 	@AfterTest
 	public void tearDown()
 	{
