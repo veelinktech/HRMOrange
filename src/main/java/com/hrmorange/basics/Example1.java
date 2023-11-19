@@ -44,6 +44,37 @@ public class Example1
 		String actualLoginTitle = driver.findElement(By.xpath("//*[@id=\"app\"]/div[1]/div/div[1]/div/div[2]/h5")).getText();
 		Assert.assertEquals(actualLoginTitle, "Login");
 	}
+	@Test(priority = 5)
+	public void verifyusername()
+	{
+		try {
+		driver.findElement(By.xpath("//input[@name='username']")).sendKeys("Admin");
+		Thread.sleep(3000);}
+		catch(Exception a)
+		{
+			System.out.println(a.getMessage());
+			
+		}
+	}
+	@Test(priority =6 )
+	public void verifypassword()
+	{
+		driver.findElement(By.xpath("//input[@name='password']")).sendKeys("admin123");
+	}
+	@Test(priority =7 )
+	public void verifyloginbutton()
+	{
+		driver.findElement(By.xpath("//button[text()=' Login ']")).click();
+	}
+	@Test(priority=4)
+	public void verifyforgotpasswordtitle()
+	{
+		String a=driver.findElement(By.xpath("//div[@class='orangehrm-login-forgot']//p")).getText();
+		Assert.assertEquals(a, "Forgot your password?");
+	}
+	
+	
+	
 	@AfterTest
 	public void tearDown()
 	{
